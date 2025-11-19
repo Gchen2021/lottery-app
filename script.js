@@ -52,19 +52,9 @@ function draw() {
                 clearInterval(shuffleInterval);
                 
                 // 显示最终结果
-                const resultMessage = `恭喜你，${name}！<br>你的天命组别是 <strong>${team}</strong>！`;
+                const resultMessage = `恭喜您，${name}，您的组别是：<strong>${team}</strong>`;
                 resultDiv.innerHTML = resultMessage;
 
-                const teamMembers = groups[team];
-                const drawnOtherMembers = teamMembers.filter(member =>
-                    member.trim() !== name && localStorage.getItem('lottery_result_' + member.trim())
-                );
-                if (drawnOtherMembers.length > 0) {
-                    resultDiv.innerHTML += `<p>你的同组队友有：${drawnOtherMembers.join('、')}</p>`;
-                } else {
-                    resultDiv.innerHTML += `<p>目前你是本组唯一已抽签的成员！</p>`;
-                }
-                
                 // 将结果存入本地存储
                 localStorage.setItem('lottery_result_' + name, team);
                 button.disabled = false; // 动画结束后恢复按钮
