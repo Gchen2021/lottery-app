@@ -1,51 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1505240502038-a1f3917812ee?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    color: #333;
 }
 
 .container {
     text-align: center;
-    background-color: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 h1 {
-    color: #333;
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 48px;
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
 }
 
 input[type="text"] {
-    padding: 10px;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 10px;
+    padding: 12px;
+    width: 250px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #f0ad4e;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #f0ad4e, #d9534f);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 20px;
-    font-size: 16px;
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.4);
 }
 
 button:hover {
-    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(217, 83, 79, 0.5);
 }
 
 #result {
-    margin-top: 30px;
-    font-size: 24px;
+    margin-top: 35px;
+    font-size: 28px;
+    color: #333;
+    min-height: 80px;
+    font-weight: bold;
+}
+
+#result strong {
+    font-size: 36px;
     color: #d9534f;
-    min-height: 50px;
+    animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
