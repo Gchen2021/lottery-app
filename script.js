@@ -30,12 +30,7 @@ function draw() {
         return;
     }
 
-    // 检查是否已经抽过签
-    const storedTeam = localStorage.getItem('lottery_result_' + name);
-    if (storedTeam) {
-        resultDiv.innerHTML = `您已经抽过签了，结果是 <strong>${storedTeam}</strong>。`;
-        return;
-    }
+    
 
     const team = nameToTeamMap[name];
 
@@ -43,6 +38,8 @@ function draw() {
         resultDiv.innerHTML = ""; // 清空之前的结果
         const button = document.querySelector('button');
         button.disabled = true; // 禁用按钮防止重复点击
+
+        resultDiv.innerHTML = "正在为您匹配天命"; // Display initial message
 
         // 模拟洗牌/滚动动画
         const allTeams = Object.keys(groups);
@@ -57,6 +54,16 @@ function draw() {
                 // 显示最终结果
                 const resultMessage = `恭喜你，${name}！<br>你的天命组别是 <strong>${team}</strong>！`;
                 resultDiv.innerHTML = resultMessage;
+
+                const teamMembers = groups[team];
+                const drawnOtherMembers = teamMembers.filter(member =>
+                    member.trim() !== name && localStorage.getItem('lottery_result_' + member.trim())
+                );
+                if (drawnOtherMembers.length > 0) {
+                    resultDiv.innerHTML += `<p>你的同组队友有：${drawnOtherMembers.join('、')}</p>`;
+                } else {
+                    resultDiv.innerHTML += `<p>目前你是本组唯一已抽签的成员！</p>`;
+                }
                 
                 // 将结果存入本地存储
                 localStorage.setItem('lottery_result_' + name, team);
